@@ -27,3 +27,7 @@ os.system("kubectl apply -f deployment.yaml")
 os.system("kubectl apply -f service.yaml")
 
 print('new version: '+y['spec']['template']['spec']['containers'][0]['image'])
+
+os.system("git add deployment.yaml")
+os.system("git commit -m 'Changing deployment version to: "+image+"'")
+os.system("git push origin main")
