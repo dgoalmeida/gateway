@@ -5,11 +5,11 @@ spring:
     gateway:
       routes:
         - id: health
-          uri: http://demo-k8s-svc:8080
+          uri: http://rabbitmq-producer-k8s-svc:8080
           predicates:
             - Path= /health
         - id: test
-          uri: http://demo-k8s-svc:8080
+          uri: http://rabbitmq-producer-k8s-svc:8080
           predicates:
             - Path= /hello
             - Header=X-Request-Id, \d+
