@@ -13,7 +13,7 @@ spec:
         app: gateway-k8s
     spec:
       containers:
-      - image: gateway:9.11
+      - image: gateway:10.12
         imagePullPolicy: IfNotPresent
         name: gateway-k8s
         ports:
