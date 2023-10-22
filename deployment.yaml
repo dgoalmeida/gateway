@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gateway_k8s
+  name: gatewayk8s
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: gateway_k8s
+      app: gatewayk8s
   template:
     metadata:
       labels:
-        app: gateway_k8s
+        app: gatewayk8s
     spec:
       containers:
-      - image: gateway:13.16
+      - image: gateway:14.18
         imagePullPolicy: IfNotPresent
-        name: gateway_k8s
+        name: gatewayk8s
         ports:
         - containerPort: 8080
