@@ -25,3 +25,12 @@ logging:
     reactor.ipc.netty: DEBUG
     reactor.netty: DEBUG
 
+otel:
+  exporter:
+    otlp:
+      endpoint: http://localhost:4317
+      enabled: true
+  traces:
+    sampler: 1.0
+  propagation: tracecontext,baggage
+
