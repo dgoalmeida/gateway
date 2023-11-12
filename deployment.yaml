@@ -13,7 +13,10 @@ spec:
         app: gateway-k8s
     spec:
       containers:
-      - image: gateway:17.111
+      - env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        image: gateway:18.112
         imagePullPolicy: IfNotPresent
         name: gateway-k8s
         ports:
