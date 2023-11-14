@@ -3,11 +3,11 @@ spring:
     gateway:
       routes:
         - id: health
-          uri: http://rabbitmq-producer-k8s-svc:8081
+          uri: http://localhost:8081
           predicates:
             - Path= /health
         - id: test
-          uri: http://rabbitmq-producer-k8s-svc:8081
+          uri: http://localhost:8081
           predicates:
             - Path= /hello
             - Header=X-Request-Id, \d+

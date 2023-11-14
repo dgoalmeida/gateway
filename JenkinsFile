@@ -1,0 +1,11 @@
+node {
+    stage("Clone Project") {
+        git branch: 'main', url: 'https://github.com/dgoalmeida/gateway.git'
+    }
+    stage("Compile") {
+        sh "./gradlew clean build -x test"
+    }
+    stage("Deploy") {
+        sh "./deploy.sh"
+    }
+}

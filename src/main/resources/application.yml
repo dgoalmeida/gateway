@@ -1,20 +1,8 @@
 spring:
   application:
     name: gateway
-  cloud:
-    gateway:
-      routes:
-        - id: health
-          uri: http://rabbitmq-producer-k8s-svc:8080
-          predicates:
-            - Path= /health
-        - id: test
-          uri: http://rabbitmq-producer-k8s-svc:8080
-          predicates:
-            - Path= /hello
-            - Header=X-Request-Id, \d+
-            - Query=param
-            - Cookie=cookie1, \d+
+  profiles:
+    active: dev
 logging:
   pattern:
     level: '%clr(%5p) %clr([traceid=%X{traceId:-} spanid=%X{spanId:-} parentspanid=%X{parentId:-}]){green}'
