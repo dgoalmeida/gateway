@@ -6,6 +6,6 @@ node {
         sh "./gradlew clean build -x test"
     }
     stage("Deploy") {
-        sh "./deploy.sh"
+        sh "deploy.sh"
     }
 }
