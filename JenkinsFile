@@ -6,20 +6,4 @@ node {
     stage("update image") {
         sh "'yq -i .spec.template.spec.containers[0].image = gateway:$BUILD_NUMBER' deployment.yaml"
     }
-
- #   stage("Compile") {
- #       sh "./gradlew clean build -x test"
- #   }
-#
-#    stage("Test") {
-#            sh "./gradlew test"
-#    }#
-#
-#    stage('Build Docker Image'){
-#            sh 'docker build -t gateway:$BUILD_NUMBER . '
-#    }#
-#
- #   stage("Deploy") {
-  #      sh "./deploy.sh"
-  #  }
 }
