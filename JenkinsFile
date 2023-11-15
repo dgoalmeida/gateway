@@ -5,7 +5,7 @@ node {
 
     stage("update image") {
         script{ datas = readYaml (file: 'deployment.yml') }
-                    echo spec.template.spec.containers[0].image.toString()
-        }
+        echo spec.template.spec.containers[0].image.toString()
+
     }
 }
