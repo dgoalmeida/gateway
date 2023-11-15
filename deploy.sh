@@ -18,16 +18,16 @@ with open("deployment.yaml") as f:
 with open("deployment.yaml","w") as f:
       yaml.dump(y, f)
 
-os.system("docker build -t "+image+" . ")
+#os.system("docker build -t "+image+" . ")
 
-os.system("minikube image load "+image)
+#os.system("minikube image load "+image)
 
-os.system("kubectl apply -f deployment.yaml")
+#os.system("kubectl apply -f deployment.yaml")
 
-os.system("kubectl apply -f service.yaml")
+#os.system("kubectl apply -f service.yaml")
 
-print('new version: '+y['spec']['template']['spec']['containers'][0]['image'])
+#print('new version: '+y['spec']['template']['spec']['containers'][0]['image'])
 
-os.system("git add deployment.yaml")
-os.system("git commit -m 'Changing deployment version to: "+image+"'")
-os.system("git push origin main")
+#os.system("git add deployment.yaml")
+#os.system("git commit -m 'Changing deployment version to: "+image+"'")
+#os.system("git push origin main")
