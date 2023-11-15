@@ -4,6 +4,6 @@ node {
     }
 
     stage("update image") {
-        sh "'yq -i .spec.template.spec.containers[0].image = gateway:$BUILD_NUMBER' deployment.yaml"
+        sh "yq -i '.spec.template.spec.containers[0].image = gateway:$BUILD_NUMBER' < deployment.yaml"
     }
 }
