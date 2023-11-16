@@ -1,9 +1,36 @@
+#!groovy
 node {
-    stage(" Clone Project") {
+    stage("Clone Project") {
         git branch: 'main', url: 'https://github.com/dgoalmeida/gateway.git'
     }
 
-    stage(" update image") {
-        sh "yq -i '.spec.template.spec.containers[0].image = gateway:$BUILD_NUMBER' < deployment.yaml"
+    stage("Compile") {
+        sh "./gradlew clean build -x test"
+    }
+
+    stage("Test") {
+            sh "./gradlew test"
+    }
+
+    stage("update image") {
+        def filename = 'deployment.yaml'
+
+        def name = 'gateway'
+        def version = name+":${env.BUILD_NUMBER}"
+        def data = readYaml file: filename
+        print data.spec.template.spec.containers[0].image
+        data.spec.template.spec.containers[0].image = version
+        print data
+        sh "rm $filename"
+        writeYaml file: filename, data: data
+    }
+
+    stage('Build Docker Image'){
+        container('docker') {
+            sh 'docker build -t gateway:$BUILD_NUMBER . '
+            sh 'minikube image load gateway:$BUILD_NUMBER'
+            sh 'kubectl apply -f deployment.yaml'
+            sh 'kubectl apply -f service.yaml'
+        }
     }
 }
