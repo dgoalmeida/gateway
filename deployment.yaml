@@ -16,10 +16,10 @@ spec:
       - env:
         - name: SPRING_PROFILES_ACTIVE
           value: prod
-        image: gateway:18.112
+        image: gateway:110.114
         imagePullPolicy: IfNotPresent
         name: gateway-k8s
         ports:
         - containerPort: 8080
       imagePullSecrets:
-        - name: registrypullsecret
+      - name: registrypullsecret
