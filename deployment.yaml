@@ -21,3 +21,5 @@ spec:
         name: gateway-k8s
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+        - name: registrypullsecret
