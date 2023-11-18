@@ -17,7 +17,7 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: prod
         image: gateway:18.112
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         name: gateway-k8s
         ports:
         - containerPort: 8080
