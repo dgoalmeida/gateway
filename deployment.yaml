@@ -17,9 +17,6 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: prod
         image: gateway:18.112
-        auth:
-          username: dgoalmeida
-          password: @Dac@413@
         imagePullPolicy: Always
         name: gateway-k8s
         ports:
