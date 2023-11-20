@@ -16,7 +16,7 @@ spec:
       - env:
         - name: SPRING_PROFILES_ACTIVE
           value: prod
-        image: gateway:110.114
+        image: gateway:111.115
         imagePullPolicy: IfNotPresent
         name: gateway-k8s
         ports:
